@@ -1,0 +1,111 @@
+\chapter{Présentation du jeu de données}
+\label{chap:dataset}
+
+\section{Vue d'ensemble}
+
+Le fichier source Excel contient \metric{200\,005} campagnes et \metric{15} colonnes. Après import PostgreSQL, la table conserve ces 15 colonnes. Après préparation Pandas, le DataFrame d'analyse en compte 21 (ajout de \texttt{year}, \texttt{month}, \texttt{month\_name}, \texttt{quarter}, \texttt{ctr} et \texttt{ctr\_percent}).
+
+\begin{table}[H]
+\centering
+\caption{Caractéristiques générales du jeu de données}
+\label{tab:dataset-overview}
+\begin{tabular}{|p{6.2cm}|p{7.5cm}|}
+\hline
+\tableheadercell{Caractéristique} & \tableheadercell{Valeur observée} \\
+\hline
+Nombre de campagnes & 200\,005 \\
+\hline
+\alternaterow
+Colonnes originales & 15 \\
+\hline
+Période des dates de campagne & 2021-01-01 $\rightarrow$ 2021-12-31 \\
+\hline
+\alternaterow
+Entreprises & 5 \\
+\hline
+Types de campagnes & 5 \\
+\hline
+\alternaterow
+Canaux & 6 \\
+\hline
+Audiences cibles & 5 \\
+\hline
+\alternaterow
+Segments clients & 5 \\
+\hline
+Localisations & 5 \\
+\hline
+\end{tabular}
+\end{table}
+
+\section{Modalités catégorielles}
+
+Les modalités suivantes ont été observées dans PostgreSQL et confirmées par l'EDA.
+
+\begin{itemize}
+\item \textbf{Entreprises :} TechCorp, Alpha Innovations, DataTech Solutions, NexGen Systems, Innovate Industries.
+\item \textbf{Types :} Influencer, Search, Display, Email, Social Media.
+\item \textbf{Canaux :} Email, Google Ads, YouTube, Instagram, Website, Facebook.
+\item \textbf{Audiences :} Men 18-24, Men 25-34, Women 25-34, Women 35-44, All Ages.
+\item \textbf{Segments :} Fashionistas, Foodies, Health \& Wellness, Outdoor Adventurers, Tech Enthusiasts.
+\item \textbf{Localisations :} Miami, New York, Chicago, Los Angeles, Houston.
+\end{itemize}
+
+Les volumes sont quasi uniformes (environ 20~\% pour les variables à cinq modalités, environ 16,7~\% pour les six canaux). Toutes les combinaisons entreprise $\times$ canal (30), type $\times$ canal (30) et audience $\times$ segment (25) sont présentes.
+
+\section{Variables principales}
+
+Les indicateurs numériques utilisés tout au long du projet sont le ROI, le coût d'acquisition, le taux de conversion, les clics, les impressions, le score d'engagement, la durée et la date de campagne. Le CTR n'est pas une colonne source : il est calculé après extraction, campagne par campagne, comme le rapport clics / impressions.
+
+\section{Dictionnaire de données}
+
+\begin{table}[H]
+\centering
+\caption{Dictionnaire de données synthétique (colonnes sources)}
+\label{tab:data-dictionary}
+\scriptsize
+\begin{tabular}{|p{3.1cm}|p{2.4cm}|p{7.6cm}|}
+\hline
+\tableheadercell{Colonne} & \tableheadercell{Type PG} & \tableheadercell{Rôle} \\
+\hline
+\texttt{campaign\_id} & \texttt{INTEGER} PK & Identifiant unique de campagne (1 à 200\,005) \\
+\hline
+\alternaterow
+\texttt{company} & \texttt{TEXT} & Entreprise à l'origine de la campagne \\
+\hline
+\texttt{campaign\_type} & \texttt{TEXT} & Type de campagne \\
+\hline
+\alternaterow
+\texttt{target\_audience} & \texttt{TEXT} & Audience ciblée \\
+\hline
+\texttt{duration\_days} & \texttt{INTEGER} & Durée en jours (15, 30, 45 ou 60) \\
+\hline
+\alternaterow
+\texttt{channel\_used} & \texttt{TEXT} & Canal utilisé \\
+\hline
+\texttt{conversion\_rate} & \texttt{NUMERIC(4,2)} & Taux de conversion (0,01 à 0,15) \\
+\hline
+\alternaterow
+\texttt{acquisition\_cost} & \texttt{NUMERIC(12,2)} & Coût d'acquisition de la campagne \\
+\hline
+\texttt{roi} & \texttt{NUMERIC(4,2)} & Retour sur investissement \\
+\hline
+\alternaterow
+\texttt{location} & \texttt{TEXT} & Localisation \\
+\hline
+\texttt{campaign\_date} & \texttt{DATE} & Date de campagne \\
+\hline
+\alternaterow
+\texttt{clicks} & \texttt{INTEGER} & Nombre de clics \\
+\hline
+\texttt{impressions} & \texttt{INTEGER} & Nombre d'impressions \\
+\hline
+\alternaterow
+\texttt{engagement\_score} & \texttt{SMALLINT} & Score d'engagement (1 à 10) \\
+\hline
+\texttt{customer\_segment} & \texttt{TEXT} & Segment client \\
+\hline
+\end{tabular}
+\end{table}
+
+La colonne Excel \texttt{Duration} (texte du type \texttt{"15 days"}) a été convertie en entier de jours à l'import. La colonne \texttt{Date} a été convertie en type \texttt{DATE}.

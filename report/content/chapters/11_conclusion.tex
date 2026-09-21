@@ -1,0 +1,9 @@
+Le projet a mis en place une chaîne complète, reproductible, allant du fichier Excel à un dashboard Python, en passant par PostgreSQL, SQL, Pandas, une EDA et seize visualisations Matplotlib revues.
+
+La chaîne technique est volontairement simple : une table relationnelle unique, des lectures SQL, une préparation Pandas bornée (calendrier et CTR), des analyses descriptives, des graphiques honnêtes sur les échelles, une restitution Streamlit filtrable. PostgreSQL et les données sources n'ont pas été altérés après l'import.
+
+Les enseignements portent sur la structure du jeu plus que sur des leviers d'action : volumes réguliers, ROI moyen proche de 5 quelle que soit la dimension, CTR asymétrique, corrélations du CTR largement définitionnelles, absence de gradient clair du ROI selon le CTR, la durée ou l'engagement.
+
+L'intérêt du pipeline est de séparer clairement stockage, exploration, préparation, analyse, visualisation et restitution, et de conserver une traçabilité des contrôles de qualité (0 anomalie détectée).
+
+Des évolutions possibles, non réalisées ici, consisteraient à ajouter une capture d'écran du dashboard dans ce rapport, à documenter d'autres jeux de données s'ils devenaient disponibles, ou à étendre la restitution sans changer le caractère descriptif de l'analyse. Aucune recommandation métier n'est déduite des écarts observés.

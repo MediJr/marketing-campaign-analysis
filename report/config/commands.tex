@@ -1,0 +1,171 @@
+% =====================================================
+% COMMANDES PERSONNALISÉES POUR LE TUTORIEL
+% =====================================================
+
+% ===== COMMANDES SPÉCIFIQUES AU PROJET =====
+
+% Références d'entreprise et organisations
+\newcommand{\companyref}[1]{\textcolor{primarycolor}{\textbf{#1}}}
+\newcommand{\universityref}[1]{\textcolor{secondarycolor}{\textbf{#1}}}
+
+% Nom du projet et technologies principales
+\newcommand{\projectref}{\textbf{\color{brandprimary}\projectname}}
+\newcommand{\mainframework}{\framework{\maintech}}
+\newcommand{\backend}{\framework{\backendtech}}
+\newcommand{\maindatabase}{\database{\databasetech}}
+\newcommand{\programming}[1]{\texttt{\color{primarycolor}#1}}
+
+% ===== COMMANDES POUR LES MÉTHODOLOGIES =====
+
+% Méthodologies de développement
+\newcommand{\agile}{\methodology{Agile}}
+\newcommand{\scrum}{\methodology{Scrum}}
+\newcommand{\kanban}{\methodology{Kanban}}
+\newcommand{\devops}{\methodology{DevOps}}
+
+% Éléments Scrum spécifiques
+\newcommand{\sprintduration}[1]{\duration{#1-week sprint}}
+\newcommand{\userstoryref}[1]{\textbf{\color{brandaccent}US-#1}}
+\newcommand{\taskref}[1]{\textbf{\color{brandsecondary}TASK-#1}}
+
+% ===== COMMANDES POUR LES TESTS =====
+
+% Types de tests
+\newcommand{\unittest}{\testcase{Unit Test}}
+\newcommand{\integrationtest}{\testcase{Integration Test}}
+% \newcommand{\e2etest}{\testcase{End-to-End Test}}
+\newcommand{\performancetest}{\testcase{Performance Test}}
+
+% Couverture de tests
+\newcommand{\codecoverage}[1]{\metric{#1\% coverage}}
+\newcommand{\testpass}[1]{\textcolor{brandsuccess}{\textbf{#1 passed}}}
+\newcommand{\testfail}[1]{\textcolor{branddanger}{\textbf{#1 failed}}}
+
+% ===== COMMANDES POUR LES PERFORMANCES =====
+
+% Métriques de performance
+\newcommand{\loadtime}[1]{\metric{#1ms load time}}
+\newcommand{\responsetime}[1]{\metric{#1ms response}}
+\newcommand{\throughput}[1]{\metric{#1 req/sec}}
+\newcommand{\concurrent}[1]{\metric{#1 concurrent users}}
+
+% Améliorations de performance
+\newcommand{\speedup}[1]{\improvement{#1× faster}}
+\newcommand{\reduction}[1]{\improvement{#1\% reduction}}
+\newcommand{\increase}[1]{\improvement{#1\% increase}}
+
+% ===== COMMANDES POUR LA SÉCURITÉ =====
+
+% Éléments de sécurité
+\newcommand{\authentication}{\important{Authentication}}
+\newcommand{\authorization}{\important{Authorization}}
+\newcommand{\encryption}{\important{Encryption}}
+\newcommand{\validation}{\important{Input Validation}}
+
+% Types d'utilisateurs et rôles
+% \newcommand{\userrole}[1]{\role{#1}}
+\newcommand{\adminrole}{\role{Administrator}}
+\newcommand{\userrole}{\role{User}}
+\newcommand{\guestrole}{\role{Guest}}
+
+% ===== COMMANDES POUR LES APIs =====
+
+% Méthodes HTTP
+\newcommand{\httpget}{\httpmethod{GET}}
+\newcommand{\httppost}{\httpmethod{POST}}
+\newcommand{\httpput}{\httpmethod{PUT}}
+\newcommand{\httpdelete}{\httpmethod{DELETE}}
+
+% Codes de statut HTTP
+\newcommand{\statusok}{\statuscode{200 OK}}
+\newcommand{\statuscreated}{\statuscode{201 Created}}
+\newcommand{\statusnotfound}{\statuscode{404 Not Found}}
+\newcommand{\statuserror}{\statuscode{500 Internal Server Error}}
+
+% Endpoints API
+\newcommand{\apiendpoint}[1]{\endpoint{/api/v1/#1}}
+
+% ===== COMMANDES POUR LA DOCUMENTATION =====
+
+% Types de documentation
+\newcommand{\apidoc}{\deliverable{API Documentation}}
+\newcommand{\userdoc}{\deliverable{User Documentation}}
+\newcommand{\techdoc}{\deliverable{Technical Documentation}}
+
+% Outils de documentation
+\newcommand{\swagger}{\software{Swagger}}
+\newcommand{\postman}{\software{Postman}}
+\newcommand{\jsdoc}{\software{JSDoc}}
+
+% ===== COMMANDES POUR LES OUTILS =====
+
+% Outils de développement
+\newcommand{\vscode}{\software{Visual Studio Code}}
+\newcommand{\git}{\software{Git}}
+\newcommand{\github}{\software{GitHub}}
+\newcommand{\docker}{\software{Docker}}
+\newcommand{\kubernetes}{\software{Kubernetes}}
+
+% Services cloud
+\newcommand{\aws}{\software{Amazon Web Services}}
+\newcommand{\azure}{\software{Microsoft Azure}}
+\newcommand{\gcp}{\software{Google Cloud Platform}}
+
+% ===== COMMANDES POUR LES DATES ET DURÉES =====
+
+% Phases du projet
+\newcommand{\phase}[1]{\milestone{Phase #1}}
+\newcommand{\iteration}[1]{\milestone{Iteration #1}}
+\newcommand{\release}[1]{\milestone{Release #1}}
+
+% Durées typiques
+\newcommand{\oneweek}{\duration{1 week}}
+\newcommand{\twoweeks}{\duration{2 weeks}}
+\newcommand{\onemonth}{\duration{1 month}}
+
+% Références croisées (préfixes de labels du projet)
+\newcommand{\filename}[1]{\texttt{#1}}
+\newcommand{\figref}[1]{\figurename~\ref{fig:#1}}
+\newcommand{\tabref}[1]{\tablename~\ref{tab:#1}}
+\newcommand{\chapref}[1]{\chaptername~\ref{chap:#1}}
+\newcommand{\secref}[1]{section~\ref{sec:#1}}
+
+\newtcolorbox{codeexplanation}[1][]{
+    enhanced,
+    colback=codebackground,
+    colframe=codeborder,
+    boxrule=0.6pt,
+    arc=2pt,
+    left=10pt,
+    right=10pt,
+    top=8pt,
+    bottom=8pt,
+    fonttitle=\bfseries,
+    title={Commentaire de code},
+    #1
+}
+
+% ===== COMMANDES POUR LES RÉFÉRENCES =====
+
+% Références aux livrables
+\newcommand{\deliverableref}[1]{Deliverable~\ref{deliv:#1}}
+\newcommand{\milestoneref}[1]{Milestone~\ref{mile:#1}}
+\newcommand{\requirementref}[1]{Requirement~\ref{req:#1}}
+
+% Références aux tests
+\newcommand{\testcaseref}[1]{Test Case~\ref{test:#1}}
+\newcommand{\testsuiteref}[1]{Test Suite~\ref{suite:#1}}
+
+% ===== COMMANDES CONDITIONNELLES =====
+
+% Compilation conditionnelle
+\newif\ifshowdetails
+\showdetailstrue  % Afficher les détails par défaut
+
+\newcommand{\detailsonly}[1]{\ifshowdetails#1\fi}
+\newcommand{\summaryonly}[1]{\ifshowdetails\else#1\fi}
+
+% Version du document
+\newcommand{\version}[1]{\textit{\color{neutralmedium}v#1}}
+\newcommand{\updated}[1]{\textit{\color{neutralmedium}Updated: #1}}
+

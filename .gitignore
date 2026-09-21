@@ -1,0 +1,95 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv/
+venv/
+env/
+ENV/
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Windows
+Thumbs.db
+Desktop.ini
+ehthumbs.db
+$RECYCLE.BIN/
+*.lnk
+
+# Streamlit
+.streamlit/secrets.toml
+.streamlit/credentials.toml
+
+# Secrets et environnement
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+credentials.json
+secrets.json
+
+# Dataset source (non versionné — voir data/README.md)
+data/*.xlsx
+data/*.xls
+data/*.csv
+data/*.parquet
+marketing_campaign_dataset/*.xlsx
+marketing_campaign_dataset/*.xls
+
+# Exports locaux
+exports/
+
+# Archives et jeux hors périmètre
+archive.zip
+archive*.zip
+archive (3)/
+
+# Template LaTeX amont (copie de travail = report/)
+_latex_template_upstream/
+
+# LaTeX — artefacts de compilation
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.lof
+*.lot
+*.out
+*.run.xml
+*.synctex.gz
+*.toc
+*.nav
+*.snm
+*.vrb
+*.idx
+*.ilg
+*.ind
+*.acn
+*.acr
+*.alg
+*.glg
+*.glo
+*.gls
+*.ist
+report/build/*
+
+# Conserver les sources du rapport ; le PDF portfolio est à la racine
+# rapport_analyse_marketing.pdf n'est PAS ignoré
+
+# IDE / OS
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store

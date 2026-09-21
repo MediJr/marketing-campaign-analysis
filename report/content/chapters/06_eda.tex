@@ -1,0 +1,121 @@
+\chapter{Analyse exploratoire}
+\label{chap:eda}
+
+L'EDA est produite par \filename{python\_eda.py}, après le même chargement et la même préparation que le profilage. Les analyses A à S sont faites dans Pandas. Aucun graphique n'est créé à cette étape. Les contrôles post-EDA sont tous OK.
+
+\section{KPI globaux}
+
+\begin{table}[H]
+\centering
+\caption{KPI globaux sur 200\,005 campagnes}
+\label{tab:kpi-globaux}
+\scriptsize
+\begin{tabular}{|p{3.3cm}|r|r|r|r|r|}
+\hline
+\tableheadercell{Variable} & \tableheadercell{Moyenne} & \tableheadercell{Médiane} & \tableheadercell{Min} & \tableheadercell{Max} & \tableheadercell{Écart-type} \\
+\hline
+ROI & 5,0024 & 5,0100 & 2,00 & 8,00 & 1,7345 \\
+\hline
+\alternaterow
+Coût d'acquisition & 12\,504,44 & 12\,497 & 5\,000 & 20\,000 & 4\,337,66 \\
+\hline
+Taux de conversion & 0,0801 & 0,0800 & 0,01 & 0,15 & 0,0406 \\
+\hline
+\alternaterow
+CTR (\%) & 14,04 & 9,98 & 1,01 & 99,20 & 13,09 \\
+\hline
+Clics & 549,77 & 550 & 100 & 1\,000 & --- \\
+\hline
+\alternaterow
+Impressions & 5\,507,31 & 5\,518 & 1\,000 & 10\,000 & --- \\
+\hline
+Engagement & 5,49 & 5 & 1 & 10 & --- \\
+\hline
+\alternaterow
+Durée (jours) & 37,50 & 30 & 15 & 60 & --- \\
+\hline
+\end{tabular}
+\end{table}
+
+Le total des coûts d'acquisition vaut 2\,500\,950\,881 (unités de la source). Le CTR moyen (14,04~\%) est nettement supérieur à la médiane (9,98~\%) : la distribution est asymétrique à droite.
+
+\section{Entreprises, types, canaux, audiences, segments, localisations}
+
+Pour chaque dimension, la somme des volumes vaut 200\,005. Les ROI moyens restent autour de 5. Aucun classement « meilleure / pire » n'est établi.
+
+\begin{table}[H]
+\centering
+\caption{Étendue des volumes et du ROI moyen par dimension}
+\label{tab:eda-categories}
+\begin{tabular}{|p{3.4cm}|r|r|r|}
+\hline
+\tableheadercell{Dimension} & \tableheadercell{$n$ (min--max)} & \tableheadercell{ROI min--max} & \tableheadercell{Écart ROI} \\
+\hline
+Entreprise & 39\,711--40\,238 & 4,9914--5,0071 & 0,016 \\
+\hline
+\alternaterow
+Type & 39\,819--40\,170 & 4,9918--5,0110 & 0,019 \\
+\hline
+Canal & 32\,820--33\,599 & 4,9887--5,0187 & 0,030 \\
+\hline
+\alternaterow
+Audience & 39\,688--40\,259 & 4,9828--5,0206 & 0,038 \\
+\hline
+Segment & 39\,742--40\,210 & 4,9994--5,0043 & 0,005 \\
+\hline
+\alternaterow
+Localisation & 39\,751--40\,269 & 4,9802--5,0123 & 0,032 \\
+\hline
+\end{tabular}
+\end{table}
+
+Conversion, CTR moyen et engagement restent du même ordre sur toutes ces dimensions (conversion $\approx$ 0,080, CTR $\approx$ 14~\%, engagement $\approx$ 5,49, coût $\approx$ 12\,500).
+
+\section{Temps et durée}
+
+Le rythme quotidien est d'environ \metric{548} campagnes par jour civil tous les mois (décembre : 547,35). Le volume plus bas de février (15\,344) correspond à 28 jours $\times$ 548, et non à une baisse d'activité distincte.
+
+\begin{table}[H]
+\centering
+\caption{KPI par trimestre}
+\label{tab:eda-trimestres}
+\begin{tabular}{|l|r|r|r|r|r|}
+\hline
+\tableheadercell{Trimestre} & \tableheadercell{$n$} & \tableheadercell{ROI} & \tableheadercell{Coût} & \tableheadercell{Conversion} & \tableheadercell{CTR (\%)} \\
+\hline
+Q1 & 49\,320 & 5,0140 & 12\,489,67 & 0,0800 & 14,08 \\
+\hline
+\alternaterow
+Q2 & 49\,868 & 5,0009 & 12\,471,62 & 0,0801 & 13,99 \\
+\hline
+Q3 & 50\,419 & 4,9921 & 12\,525,93 & 0,0799 & 14,00 \\
+\hline
+\alternaterow
+Q4 & 50\,398 & 5,0029 & 12\,529,87 & 0,0802 & 14,09 \\
+\hline
+\end{tabular}
+\end{table}
+
+ROI mensuel : minimum 4,9764 (août), maximum 5,0222 (janvier), écart 0,046. Cette variation n'est pas lue comme une tendance.
+
+Les quatre durées (15, 30, 45, 60 jours) représentent chacune environ 25~\% des campagnes. L'écart de ROI moyen entre durées est 0,012.
+
+\section{Classes de ROI, CTR, conversion et engagement}
+
+Les classes de ROI (faible $<$ 4, moyen $[4,6[$, élevé $\geq$ 6) forment trois tiers presque égaux (33,25~\%, 33,22~\%, 33,53~\%). Coût, conversion, CTR et engagement ne séparent pas ces classes.
+
+Le CTR a pour quartiles P25 = 5,86~\% et P75 = 16,97~\%. Les classes de CTR donnent des ROI moyens de 5,0154 (CTR $<$ 5~\%), 4,9985 (5--15~\%) et 5,0004 ($\geq$ 15~\%).
+
+Le taux de conversion prend 15 valeurs distinctes (0,01 à 0,15). Le ROI moyen par valeur reste dans 4,96--5,04, sans gradient.
+
+Les scores d'engagement de 1 à 10 pèsent chacun environ 10~\% (19\,882 à 20\,141 campagnes). Le ROI moyen par score reste dans 4,98--5,02.
+
+\section{Corrélations et croisements}
+
+La grille descriptive de $|r|$ de Pearson est : $<$ 0,10 négligeable ; 0,10--0,30 faible ; 0,30--0,50 modérée ; 0,50--0,70 notable ; 0,70--0,90 forte ; $\geq$ 0,90 très forte. Une corrélation n'est pas une causalité.
+
+Seules deux paires ont $|r| \geq 0,10$ : impressions vs CTR ($r = -0,6575$, notable) et clics vs CTR ($r = +0,5065$, notable). Ces liens sont mécaniques : $\mathrm{CTR} = \mathrm{clics}/\mathrm{impressions}$. Le ROI n'est associé linéairement ni au CTR, ni à la conversion, ni à l'engagement ($|r| < 0,10$).
+
+Les 30 combinaisons entreprise $\times$ canal, 30 type $\times$ canal et 25 audience $\times$ segment sont toutes observées. Le ROI des cellules reste dans une bande étroite ($\approx$ 4,96--5,04).
+
+Aucune modalité n'est inférée comme dominante ($>$ 40~\%) ou minoritaire ($<$ 5~\%). L'écart max--min de parts est au plus 0,39 point (canaux).

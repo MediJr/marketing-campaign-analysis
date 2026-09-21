@@ -1,0 +1,130 @@
+% =====================================================
+% SCHÉMA DE COULEURS PERSONNALISÉ POUR LE TUTORIEL
+% =====================================================
+
+% ===== COULEURS PRINCIPALES DU PROJET =====
+
+% Couleurs de marque (personnalisables selon l'entreprise)
+\definecolor{brandprimary}{RGB}{25,118,210}        % Bleu corporate moderne
+\definecolor{brandsecondary}{RGB}{46,125,50}       % Vert professionnel
+\definecolor{brandaccent}{RGB}{255,112,67}         % Orange accent dynamique
+
+% Variantes des couleurs principales
+\definecolor{brandprimarylight}{RGB}{144,202,249}  % Bleu clair
+\definecolor{brandsecondarylight}{RGB}{129,199,132} % Vert clair
+\definecolor{brandaccentlight}{RGB}{255,183,77}    % Orange clair
+
+\definecolor{brandprimarydark}{RGB}{13,71,161}     % Bleu foncé
+\definecolor{brandsecondarydark}{RGB}{27,94,32}    % Vert foncé
+\definecolor{brandaccentdark}{RGB}{230,74,25}      % Orange foncé
+
+% ===== COULEURS NEUTRES PROFESSIONNELLES =====
+
+% Échelle de gris moderne
+\definecolor{neutraldark}{RGB}{33,33,33}           % Noir corporate
+\definecolor{neutralmedium}{RGB}{97,97,97}         % Gris moyen
+\definecolor{neutrallight}{RGB}{158,158,158}       % Gris clair
+\definecolor{neutrallighter}{RGB}{224,224,224}     % Gris très clair
+\definecolor{neutralwhite}{RGB}{255,255,255}       % Blanc pur
+
+% Couleurs de fond
+\definecolor{backgroundprimary}{RGB}{250,250,250}  % Fond principal
+\definecolor{backgroundsecondary}{RGB}{245,245,245} % Fond secondaire
+\definecolor{backgroundcard}{RGB}{255,255,255}     % Fond cartes/boîtes
+
+% ===== COULEURS SÉMANTIQUES =====
+
+% États et notifications
+\definecolor{successcolor}{RGB}{76,175,80}         % Succès (vert)
+\definecolor{warningcolor}{RGB}{255,152,0}         % Avertissement (orange)
+\definecolor{errorcolor}{RGB}{244,67,54}           % Erreur (rouge)
+\definecolor{infocolor}{RGB}{33,150,243}           % Information (bleu)
+
+% Variantes claires pour les fonds
+\definecolor{successlight}{RGB}{232,245,233}       % Fond succès
+\definecolor{warninglight}{RGB}{255,243,224}       % Fond avertissement
+\definecolor{errorlight}{RGB}{255,235,238}         % Fond erreur
+\definecolor{infolight}{RGB}{227,242,253}          % Fond information
+
+% ===== COULEURS POUR LE CODE SOURCE =====
+
+% Syntaxe highlighting moderne
+\definecolor{codebackground}{RGB}{248,249,250}     % Fond code
+\definecolor{codeborder}{RGB}{218,220,224}         % Bordure code
+\definecolor{codekeyword}{RGB}{215,58,73}          % Mots-clés
+\definecolor{codecomment}{RGB}{106,153,85}         % Commentaires
+\definecolor{codestring}{RGB}{3,102,214}           % Chaînes
+\definecolor{codenumber}{RGB}{0,92,197}            % Nombres
+\definecolor{codefunction}{RGB}{121,93,163}        % Fonctions
+\definecolor{codevariable}{RGB}{227,98,9}          % Variables
+
+% ===== COULEURS POUR LES TABLEAUX =====
+
+% Style moderne pour tableaux
+\definecolor{tableheadercolor}{RGB}{37,99,235}     % En-têtes (bleu)
+\definecolor{tableheadertext}{RGB}{255,255,255}    % Texte en-têtes
+\definecolor{tablealternatecolor}{RGB}{248,250,252} % Lignes alternées
+\definecolor{tablehovercolor}{RGB}{219,234,254}    % Survol (bleu clair)
+\definecolor{tableborder}{RGB}{203,213,225}        % Bordures
+
+% ===== COULEURS POUR LES GRAPHIQUES =====
+
+% Palette accessible pour graphiques (respecte les standards d'accessibilité)
+\definecolor{chartblue}{RGB}{54,162,235}           % Bleu graphique
+\definecolor{chartred}{RGB}{255,99,132}            % Rouge graphique
+\definecolor{chartgreen}{RGB}{75,192,192}          % Vert graphique
+\definecolor{chartyellow}{RGB}{255,205,86}         % Jaune graphique
+\definecolor{chartpurple}{RGB}{153,102,255}        % Violet graphique
+\definecolor{chartorange}{RGB}{255,159,64}         % Orange graphique
+
+% ===== COULEURS POUR LA GESTION DE PROJET =====
+
+% États des tâches
+\definecolor{todostatus}{RGB}{156,163,175}         % À faire (gris)
+\definecolor{inprogressstatus}{RGB}{59,130,246}    % En cours (bleu)
+\definecolor{reviewstatus}{RGB}{245,158,11}        % En révision (orange)
+\definecolor{donestatus}{RGB}{34,197,94}           % Terminé (vert)
+\definecolor{blockedstatus}{RGB}{239,68,68}        % Bloqué (rouge)
+
+% Priorités
+\definecolor{prioritylow}{RGB}{156,163,175}        % Basse (gris)
+\definecolor{prioritymedium}{RGB}{245,158,11}      % Moyenne (orange)
+\definecolor{priorityhigh}{RGB}{239,68,68}         % Haute (rouge)
+\definecolor{prioritycritical}{RGB}{147,51,234}    % Critique (violet)
+
+% ===== CONFIGURATION DES LIENS HYPERTEXTE =====
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=neutraldark,          % Liens internes
+    citecolor=brandsecondary,        % Citations
+    filecolor=brandaccent,           % Fichiers
+    urlcolor=brandprimary,           % URLs
+    anchorcolor=brandprimarydark,    % Ancres
+    menucolor=brandprimary,          % Menus PDF
+    runcolor=brandaccent,            % Exécutables
+    bookmarksnumbered=true,
+    bookmarksopen=true,
+    bookmarksopenlevel=1,
+    pdfstartview=FitH,
+    pdfpagelayout=OneColumn,
+    pdfdisplaydoctitle=true
+}
+
+% ===== COULEURS POUR L'IMPRESSION =====
+
+% Alternatives haute-contraste pour l'impression
+\definecolor{printblack}{RGB}{0,0,0}               % Noir impression
+\definecolor{printgray}{RGB}{64,64,64}             % Gris impression
+\definecolor{printlightgray}{RGB}{128,128,128}     % Gris clair impression
+
+% Commande pour basculer en mode impression
+\newif\ifprintmode
+\printmodefalse  % Mode écran par défaut
+
+% Redéfinition conditionnelle des couleurs pour l'impression
+\ifprintmode
+    \definecolor{brandprimary}{RGB}{0,0,0}
+    \definecolor{brandsecondary}{RGB}{64,64,64}
+    \definecolor{brandaccent}{RGB}{128,128,128}
+\fi

@@ -1,0 +1,141 @@
+% =====================================================
+% RAPPORT D'ANALYSE — CAMPAGNES MARKETING
+% Template : sikatikenmogne/latex-report-template (MIT)
+% =====================================================
+
+\documentclass{internshipreport}
+
+\reporttitle{Analyse des performances des campagnes marketing}
+\reportsubtitle{De PostgreSQL à Python : exploration, analyse et visualisation de 200\,005 campagnes marketing}
+\reporttype{RAPPORT D'ANALYSE DE DONNÉES}
+
+\reportauthor{Manassé Medi}
+\studentid{}
+\program{Data Analytics / Data Analysis}
+\academicyear{2026}
+\internshipperiod{Année 2021 (données) --- rédaction 2026}
+
+\university{Data Analytics}
+\department{Analyse de données}
+\academicsupervisor{}
+\supervisorposition{}
+
+\company{PostgreSQL, SQL, Python, Pandas, Matplotlib, Streamlit}
+\companydepartment{Pipeline analytique}
+\companytutor{}
+\tutorposition{}
+
+\defensedate{2026}
+
+\input{config/packages}
+\input{config/colors}
+\input{config/commands}
+\input{config/style}
+\input{config/metadata}
+
+\input{templates/boxes}
+\input{templates/figures}
+\input{templates/tables}
+
+\begin{document}
+
+\input{content/frontmatter/titlepage}
+
+\newgeometry{top=1.75cm,bottom=1.75cm,left=2.54cm,right=2.54cm}
+\frontmatter
+
+\chapter*{Résumé}
+\addcontentsline{toc}{chapter}{Résumé}
+
+Ce rapport documente un projet d'analyse de performances de campagnes marketing, réalisé sur un jeu de \metric{200\,005} campagnes observées du 1\textsuperscript{er} janvier au 31 décembre 2021. L'objectif est d'explorer, de décrire et de restituer les indicateurs de performance (ROI, coût d'acquisition, conversion, CTR, engagement) selon les entreprises, types de campagnes, canaux, audiences, segments, localisations et la période, sans inférence causale.
+
+Les données sources proviennent d'un fichier Excel, chargées dans PostgreSQL (\database{marketing\_analysis}, table \filename{public.marketing\_campaigns}), explorées en SQL, extraites vers \technology{Pandas}, profilées, analysées (EDA), visualisées avec \technology{Matplotlib} puis restituées dans un dashboard \technology{Streamlit}. Le stockage repose sur une table relationnelle unique, volontairement sans modèle en étoile ni en flocon.
+
+Les résultats principaux sont descriptifs : volumes très équilibrés entre modalités ; rythme d'environ 548 campagnes par jour civil ; ROI moyen de 5,0024, stable d'une dimension à l'autre ; CTR moyen de 14,04~\% contre une médiane de 9,98~\% ; seules corrélations notables entre CTR, clics et impressions, liées à la définition du ratio. Aucune anomalie de qualité n'a été détectée.
+
+\textbf{Mots-clés :} Data Analytics, PostgreSQL, SQL, Python, Pandas, Data Visualization, Streamlit, Marketing Analytics.
+
+\newpage
+\chapter*{Table des matières}
+\vspace*{-2cm}
+\addcontentsline{toc}{chapter}{Table des matières}
+\begin{singlespace}
+\renewcommand{\contentsname}{}
+\vspace*{-1cm}
+\tableofcontents
+\end{singlespace}
+
+\newpage
+\chapter*{Liste des figures}
+\vspace*{-2cm}
+\addcontentsline{toc}{chapter}{Liste des figures}
+\begin{singlespace}
+\renewcommand{\listfigurename}{}
+\vspace*{-1cm}
+\listoffigures
+\end{singlespace}
+
+\newpage
+\chapter*{Liste des tableaux}
+\vspace*{-2cm}
+\addcontentsline{toc}{chapter}{Liste des tableaux}
+\begin{singlespace}
+\renewcommand{\listtablename}{}
+\vspace*{-1cm}
+\listoftables
+\end{singlespace}
+
+\chapter*{Liste des abréviations}
+\addcontentsline{toc}{chapter}{Liste des abréviations}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|p{3.2cm}|p{10.5cm}|}
+\hline
+\tableheadercell{Abréviation} & \tableheadercell{Définition} \\
+\hline
+CTR & Click-Through Rate (clics / impressions) \\
+\hline
+\alternaterow
+EDA & Exploratory Data Analysis (analyse exploratoire) \\
+\hline
+KPI & Key Performance Indicator (indicateur de performance) \\
+\hline
+\alternaterow
+ROI & Return on Investment (retour sur investissement) \\
+\hline
+SQL & Structured Query Language \\
+\hline
+\alternaterow
+SGBD & Système de gestion de bases de données \\
+\hline
+\end{tabular}
+\caption{Abréviations utilisées dans le rapport}
+\label{tab:abbreviations}
+\end{table}
+
+\mainmatter
+
+\input{content/chapters/01_introduction}
+\input{content/chapters/02_dataset}
+\input{content/chapters/03_architecture}
+\input{content/chapters/04_sql}
+\input{content/chapters/05_python}
+\input{content/chapters/06_eda}
+\input{content/chapters/07_visualisations}
+\input{content/chapters/08_dashboard}
+\input{content/chapters/09_resultats}
+\input{content/chapters/10_limites}
+
+\chapter{Conclusion}
+\label{chap:conclusion}
+\input{content/chapters/11_conclusion}
+
+\appendix
+\input{content/chapters/12_annexes}
+
+\chapter*{Bibliographie}
+\addcontentsline{toc}{chapter}{Bibliographie}
+\printbibliography[heading=none]
+
+\end{document}

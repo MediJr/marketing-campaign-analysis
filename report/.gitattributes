@@ -1,0 +1,2 @@
+# Mark specific files as not being a certain language
+*.py linguist-detectable=false

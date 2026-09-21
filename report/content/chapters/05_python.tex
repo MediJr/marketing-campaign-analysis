@@ -1,0 +1,60 @@
+\chapter{Extraction et préparation Python}
+\label{chap:python}
+
+\section{Connexion et extraction}
+
+Le script \filename{postgres\_to\_python.py} établit une connexion SQLAlchemy \texttt{postgresql+psycopg2} vers \texttt{127.0.0.1:5432/marketing\_analysis}, avec le rôle \texttt{data\_project}. Le mot de passe est demandé par \texttt{getpass} et n'est jamais inscrit dans le code \cite{sqlalchemydocs}. La requête est :
+
+\begin{lstlisting}[language=SQL, caption={Extraction complète, lecture seule}, label={lst:select-star}]
+SELECT *
+FROM public.marketing_campaigns
+ORDER BY campaign_id;
+\end{lstlisting}
+
+Le résultat est chargé par \texttt{pandas.read\_sql}. Le moteur est fermé dans un \texttt{finally} (\texttt{engine.dispose()}). Shape à l'extraction : $(200005,\ 15)$.
+
+\section{Contrôle des types}
+
+À l'arrivée dans Pandas : entiers en \texttt{int64}, numériques en \texttt{float64}, catégories en \texttt{str}, \texttt{campaign\_date} d'abord en \texttt{object}. \texttt{df.info()} indique 200\,005 non-null sur chaque colonne. Aucune colonne entièrement vide.
+
+\section{Préparation}
+
+Le script \filename{python\_dataframe\_profiling.py} convertit la date et ajoute six colonnes, sans modifier les 15 colonnes sources :
+
+\begin{itemize}
+\item \texttt{year}, \texttt{month}, \texttt{month\_name}, \texttt{quarter} dérivés de \texttt{campaign\_date} ;
+\item \texttt{ctr} = clics / impressions, avec valeur manquante si impressions nulles (cas non observé) ;
+\item \texttt{ctr\_percent} = $\texttt{ctr} \times 100$.
+\end{itemize}
+
+Le DataFrame préparé a pour shape $(200005,\ 21)$.
+
+\section{Contrôles qualité}
+
+\begin{table}[H]
+\centering
+\caption{Contrôles de préparation (Pandas)}
+\label{tab:prep-checks}
+\begin{tabular}{|p{7.2cm}|p{5.5cm}|}
+\hline
+\tableheadercell{Contrôle} & \tableheadercell{Résultat} \\
+\hline
+Shape source $(200005,\ 15)$ & OK \\
+\hline
+\alternaterow
+\texttt{campaign\_id} unique, min 1, max 200\,005 & OK \\
+\hline
+Valeurs manquantes & 0 \\
+\hline
+\alternaterow
+Dates dans $[2021$-$01$-$01,\ 2021$-$12$-$31]$ & OK \\
+\hline
+Cohérence \texttt{ctr} = clics / impressions & OK \\
+\hline
+\alternaterow
+Colonnes sources inchangées après préparation & OK \\
+\hline
+\end{tabular}
+\end{table}
+
+Ces contrôles sont repris à l'issue de l'EDA (\filename{python\_eda.py}) : 0 NaN, 0 infini, 0 anomalie.

@@ -1,0 +1,59 @@
+\chapter{Architecture et pipeline}
+\label{chap:architecture}
+
+\section{Chaîne technique}
+
+Le projet suit une chaîne linéaire, chaque étape consommant le résultat de la précédente sans réécrire PostgreSQL ni le fichier Excel une fois l'import effectué.
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+    node distance=7mm,
+    box/.style={
+        draw=primarycolor,
+        line width=0.7pt,
+        rounded corners=1pt,
+        align=center,
+        font=\small,
+        inner sep=5pt,
+        minimum width=7.4cm,
+        fill=primarycolor!6
+    },
+    arr/.style={-{Stealth}, thick, primarycolor}
+]
+\node[box] (excel) {Excel\\ \texttt{marketing\_campaign\_dataset.xlsx}};
+\node[box, below=of excel] (pg) {PostgreSQL\\ base \texttt{marketing\_analysis}, table unique};
+\node[box, below=of pg] (sql) {SQL\\ exploration, agrégations, KPI};
+\node[box, below=of sql] (py) {Python / Pandas\\ extraction lecture seule};
+\node[box, below=of py] (prof) {Profiling / préparation\\ date, trimestre, CTR};
+\node[box, below=of prof] (eda) {EDA\\ \texttt{python\_eda.py}};
+\node[box, below=of eda] (mpl) {Matplotlib\\ 16 visualisations validées};
+\node[box, below=of mpl] (st) {Streamlit\\ \texttt{dashboard.py}};
+\draw[arr] (excel) -- (pg);
+\draw[arr] (pg) -- (sql);
+\draw[arr] (sql) -- (py);
+\draw[arr] (py) -- (prof);
+\draw[arr] (prof) -- (eda);
+\draw[arr] (eda) -- (mpl);
+\draw[arr] (mpl) -- (st);
+\end{tikzpicture}
+\caption{Pipeline analytique du projet (table relationnelle unique)}
+\label{fig:pipeline}
+\end{figure}
+
+\section{Rôle de chaque étape}
+
+\begin{enumerate}
+\item \textbf{Excel.} Jeu source, non modifié après import.
+\item \textbf{PostgreSQL.} Stockage structuré, contraintes, point de vérité pour les analyses SQL \cite{postgresql18}.
+\item \textbf{SQL.} Lectures seules : volumes, moyennes, \texttt{CASE}, \texttt{HAVING}, analyses croisées et temporelles.
+\item \textbf{Python / Pandas.} Extraction \texttt{SELECT *} ordonnée par \texttt{campaign\_id}, inspection des types et de la mémoire \cite{pandasdocs,sqlalchemydocs}.
+\item \textbf{Profiling.} Contrôle des nulls, unicité de \texttt{campaign\_id}, conversion de la date, création des colonnes calendaires et du CTR.
+\item \textbf{EDA.} Analyses A à S dans Pandas, sans graphique.
+\item \textbf{Matplotlib.} Seize figures PNG, puis revue : seule l'échelle du rythme quotidien du graphique mensuel a été corrigée \cite{matplotlibdocs}.
+\item \textbf{Streamlit.} Restitution filtrable des KPI et graphiques, export CSV du sous-ensemble affiché \cite{streamlitdocs}.
+\end{enumerate}
+
+\begin{infobox}[Choix d'architecture]
+Le projet utilise volontairement \important{une table relationnelle unique}. Il n'y a pas de modèle en étoile, ni en flocon, ni de tables de faits et de dimensions séparées.
+\end{infobox}

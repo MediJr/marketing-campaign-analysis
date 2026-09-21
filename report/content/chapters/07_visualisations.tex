@@ -1,0 +1,38 @@
+\chapter{Visualisations}
+\label{chap:visualisations}
+
+Les seize figures sont produites par \filename{python\_visualisations.py} (Matplotlib, sans Seaborn ni Plotly) et enregistrées dans \filename{visualisations/}. La revue n'a corrigé que \filename{04\_volume\_mensuel.png} (échelle honnête 540--556 campagnes/jour). Les graphiques ci-dessous sont ceux classés essentiels ; les autres sont en annexe~\ref{app:viz}.
+
+\section{Volume par entreprise}
+
+La \figref{volume-company} montre des effectifs très proches entre les cinq entreprises (environ 20~\% chacune). Les libellés indiquent l'effectif et la part. Ce graphique décrit un volume, pas une performance.
+
+\standardfigure{assets/images/charts/01_volume_company.png}{0.92\textwidth}{Répartition des campagnes par entreprise (volumes, pas un classement de performance)}{fig:volume-company}
+
+\section{Volume mensuel}
+
+La \figref{volume-mensuel} superpose le volume mensuel brut et le rythme quotidien (n / nombre de jours du mois). Après correction de l'échelle, le rythme apparaît plat, autour de 548 campagnes/jour. Février n'est plus bas que parce qu'il a 28 jours.
+
+\standardfigure{assets/images/charts/04_volume_mensuel.png}{0.92\textwidth}{Volume mensuel et campagnes par jour civil en 2021 (échelle quotidienne 540--556)}{fig:volume-mensuel}
+
+\section{Distribution du CTR}
+
+La \figref{dist-ctr} présente le CTR en pourcentage. La moyenne (14,04~\%) est supérieure à la médiane (9,98~\%) : asymétrie à droite. L'axe s'étend de 0 à 100~\%.
+
+\standardfigure{assets/images/charts/07_distribution_ctr.png}{0.92\textwidth}{Distribution du CTR (\%)}{fig:dist-ctr}
+
+\section{Corrélations}
+
+La \figref{corr} affiche les coefficients de Pearson entre ROI, coût d'acquisition, conversion, clics, impressions, engagement, durée et CTR. Les deux coefficients visuellement saillants concernent CTR--clics et CTR--impressions.
+
+\standardfigure{assets/images/charts/10_heatmap_correlations.png}{0.88\textwidth}{Corrélations de Pearson entre variables numériques}{fig:corr}
+
+\begin{warningbox}[Lecture du CTR]
+CTR = Clicks / Impressions. Les corrélations CTR--Clicks et CTR--Impressions sont liées à la définition du ratio et ne doivent pas être interprétées comme des relations causales.
+\end{warningbox}
+
+\section{ROI selon la classe de CTR}
+
+La \figref{roi-ctr} compare les distributions de ROI pour CTR faible ($<$ 5~\%), moyen ($[5,15[$) et élevé ($\geq$ 15~\%). Les boîtes restent très proches ; les ROI moyens valent 5,0154, 4,9985 et 5,0004.
+
+\standardfigure{assets/images/charts/12_roi_classes_ctr.png}{0.82\textwidth}{ROI selon la classe de CTR}{fig:roi-ctr}

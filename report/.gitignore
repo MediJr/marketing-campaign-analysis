@@ -1,0 +1,114 @@
+# LaTeX build files
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.run.xml
+*.synctex.gz
+*.toc
+*.lof
+*.lot
+*.acn
+*.acr
+*.alg
+*.glg
+*.glo
+*.gls
+*.idx
+*.ilg
+*.ind
+*.ist
+*.lol
+*.nav
+*.snm
+*.vrb
+*.xdy
+*.tdo
+
+# Build directory (except structure)
+build/*.aux
+build/*.log
+build/*.out
+build/*.toc
+build/*.lof
+build/*.lot
+build/*.bbl
+build/*.bcf
+build/*.blg
+build/*.run.xml
+build/*.synctex.gz
+build/*.pdf
+# Le PDF portfolio est à la racine du dépôt (rapport_analyse_marketing.pdf)
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+
+# IDE files
+.vscode/settings.json
+.idea/
+
+# Backup files
+*.backup
+*.bak
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+
+# Build directories
+dist/
+
+# Python
+.mypy_cache/
+*.py[cod]
+*$py.class
+*.so
+
+# Operating Systems
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+
+# Editors
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/extensions.json
+.idea/
+*.swp
+*.swo
+*~
+
+# Temporary files
+*.tmp
+*.backup
+*.bak
+*.old
+
+# Personal files
+config/personal.tex
+metadata-personal.tex
+TODO.md
+NOTES.md

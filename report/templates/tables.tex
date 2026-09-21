@@ -1,0 +1,84 @@
+% =====================================================
+% TEMPLATES DE TABLEAUX
+% =====================================================
+
+% Template de tableau standard
+\newenvironment{standardtable}[2]
+{
+  \begin{table}[h]
+  \centering
+  \rowcolors{2}{tablealternate}{white}
+  \begin{tabular}{#1}
+  \rowcolor{tableheader}
+  #2 \\
+  \hline
+}
+{
+  \hline
+  \end{tabular}
+  \end{table}
+}
+
+% Template de tableau avec alternance
+\newenvironment{alternatingtable}[2]
+{
+  \begin{table}[h]
+  \centering
+  \rowcolors{2}{tablealternate}{white}
+  \begin{tabular}{#1}
+  \rowcolor{tableheader}
+  #2 \\
+  \hline
+}
+{
+  \hline
+  \end{tabular}
+  \end{table}
+}
+
+% Template de tableau coloré
+\newenvironment{coloredtable}[3]
+{
+  \begin{table}[h]
+  \centering
+  \rowcolors{2}{#3}{white}
+  \begin{tabular}{#1}
+  \rowcolor{tableheader}
+  #2 \\
+  \hline
+}
+{
+  \hline
+  \end{tabular}
+  \end{table}
+}
+
+% Template pour tableau de métriques
+\newcommand{\metricstable}[1]{
+  \begin{table}[h]
+  \centering
+  \begin{tabular}{|>{\columncolor{tableheader}}p{5cm}|>{\centering\arraybackslash}p{2cm}|>{\centering\arraybackslash}p{2cm}|>{\centering\arraybackslash\color{textcolor}\bfseries}p{2cm}|}
+  \hline
+  \rowcolor{tableheader}
+  \textbf{Indicator} & \textbf{Before} & \textbf{After} & \textbf{Improvement} \\
+  \hline
+  #1
+  \end{tabular}
+  \end{table}
+}
+
+% Template de tableau simple sans bordures
+\newenvironment{simpletable}[2]
+{
+  \begin{table}[h]
+  \centering
+  \begin{tabular}{#1}
+  \toprule
+  #2 \\
+  \midrule
+}
+{
+  \bottomrule
+  \end{tabular}
+  \end{table}
+}

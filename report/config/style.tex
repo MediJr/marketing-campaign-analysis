@@ -1,0 +1,189 @@
+% =====================================================
+% CONFIGURATION AVANCÉE DU STYLE
+% =====================================================
+
+% Commandes \frontmatter / \mainmatter (classe book), absentes de report
+% et utilisées par le template dans main.tex.
+\makeatletter
+\newif\if@mainmatter
+\@mainmattertrue
+\providecommand{\frontmatter}{%
+  \cleardoublepage
+  \@mainmatterfalse
+  \pagenumbering{roman}%
+}
+\providecommand{\mainmatter}{%
+  \cleardoublepage
+  \@mainmattertrue
+  \pagenumbering{arabic}%
+}
+\makeatother
+
+% ===== TYPOGRAPHIE PERSONNALISÉE =====
+
+% Interligne (choix: \singlespacing, \onehalfspacing, \doublespacing)
+\onehalfspacing  % Interligne 1.5 (recommandé pour les rapports)
+
+% Espacement des paragraphes
+\setlength{\parskip}{8pt plus 2pt minus 1pt}    % 8pt entre paragraphes
+\setlength{\parindent}{0pt}                     % Pas d'indentation première ligne
+
+% Marges personnalisées (optionnel - déjà défini dans la classe)
+% \geometry{
+%     top=2.5cm,
+%     bottom=2.5cm,
+%     left=3cm,
+%     right=2.5cm,
+%     headheight=15pt
+% }
+
+% ===== PERSONNALISATION DES TITRES =====
+
+% Espacement autour des titres
+\titlespacing*{\chapter}{0pt}{-10pt}{25pt}      % Chapitre: espace avant/après
+\titlespacing*{\section}{0pt}{18pt}{12pt}       % Section: espace avant/après
+\titlespacing*{\subsection}{0pt}{14pt}{8pt}     % Sous-section: espace avant/après
+\titlespacing*{\subsubsection}{0pt}{12pt}{6pt}  % Sous-sous-section
+
+% Couleurs des titres (personnalisable)
+\titleformat{\chapter}[display]
+    {\normalfont\huge\bfseries\color{brandprimary}}
+    {\chaptertitlename\ \thechapter}{20pt}{\Huge\MakeUppercase}
+
+\titleformat{\section}
+    {\normalfont\Large\bfseries\color{brandsecondary}}
+    {\thesection}{1em}{}
+
+\titleformat{\subsection}
+    {\normalfont\large\bfseries\color{neutraldark}}
+    {\thesubsection}{1em}{}
+
+% ===== CONFIGURATION DES LISTES =====
+
+% Listes à puces - niveau 1
+\setlist[itemize,1]{
+    label=\textcolor{neutraldark}{\textbullet},
+    leftmargin=20pt,
+    itemsep=3pt,
+    parsep=1pt,
+    topsep=6pt,
+    partopsep=0pt
+}
+
+% Listes à puces - niveau 2
+\setlist[itemize,2]{
+    label=\textcolor{neutraldark}{\textendash},
+    leftmargin=35pt,
+    itemsep=2pt,
+    parsep=0pt,
+    topsep=3pt
+}
+
+% Listes numérotées
+\setlist[enumerate,1]{
+    leftmargin=20pt,
+    itemsep=3pt,
+    parsep=1pt,
+    topsep=6pt
+}
+
+% ===== STYLE DES TABLEAUX =====
+
+% Espacement global des tableaux
+\renewcommand{\arraystretch}{1.4}  % Hauteur des lignes
+\setlength{\tabcolsep}{10pt}       % Espacement des colonnes
+
+% Style des en-têtes de tableaux
+\renewcommand{\tableheadercell}[1]{%
+    \cellcolor{tableheadercolor}\textbf{\color{neutraldark}#1}%
+}
+
+% ===== CONFIGURATION DES FIGURES =====
+
+% Positionnement par défaut des figures
+\renewcommand{\topfraction}{0.9}       % Max 90% de la page pour figures en haut
+\renewcommand{\bottomfraction}{0.9}    % Max 90% de la page pour figures en bas
+\renewcommand{\textfraction}{0.1}      % Min 10% de la page pour le texte
+\renewcommand{\floatpagefraction}{0.8} % Min 80% pour page de figures
+
+% Style des légendes
+\captionsetup[figure]{
+    font={small},
+    labelfont={bf,color=neutraldark},
+    textfont={color=neutraldark},
+    margin=20pt,
+    skip=12pt,
+    position=bottom
+}
+
+\captionsetup[table]{
+    font={small},
+    labelfont={bf,color=neutraldark},
+    textfont={color=neutraldark},
+    margin=20pt,
+    skip=8pt,
+    position=top
+}
+
+% ===== STYLE DU CODE SOURCE =====
+
+% Configuration globale pour tous les listings
+\lstset{
+    backgroundcolor=\color{codebackground},
+    basicstyle=\footnotesize\ttfamily\color{neutraldark},
+    commentstyle=\color{codecomment}\itshape,
+    keywordstyle=\color{codekeyword}\bfseries,
+    stringstyle=\color{codestring},
+    numberstyle=\tiny\color{neutralmedium},
+    numbers=left,
+    numbersep=12pt,
+    frame=single,
+    rulecolor=\color{codeborder},
+    frameround=tttt,
+    framesep=10pt,
+    xleftmargin=20pt,
+    xrightmargin=10pt,
+    breaklines=true,
+    breakatwhitespace=false,
+    tabsize=2,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    captionpos=b
+}
+
+% ===== EN-TÊTES ET PIEDS DE PAGE =====
+
+% Style pour les pages normales
+\fancypagestyle{mainmatter}{
+    \fancyhf{}
+    \fancyhead[C]{\footnotesize\textcolor{neutralmedium}{\MakeUppercase{\@reporttitle}}}
+    \fancyfoot[R]{\footnotesize\textcolor{neutralmedium}{%
+        \leftmark \quad \textbf{|} \quad \textbf{\thepage}%
+    }}
+    \renewcommand{\headrulewidth}{0pt}
+    \renewcommand{\footrulewidth}{0.5pt}
+    \renewcommand{\footrule}{\color{neutrallight}\hrule width\headwidth height\footrulewidth}
+}
+
+% Style pour les pages de chapitre
+\fancypagestyle{plain}{
+    \fancyhf{}
+    \fancyfoot[C]{\textcolor{neutraldark}{\thepage}}
+    \renewcommand{\headrulewidth}{0pt}
+    \renewcommand{\footrulewidth}{0pt}
+}
+
+% ===== PERSONNALISATION TABLE DES MATIÈRES =====
+
+% Style du titre de la table des matières
+% \renewcommand{\cfttoctitlefont}{\Large\bfseries\color{brandprimary}}
+
+% Style des entrées de chapitre
+\renewcommand{\cftchapfont}{\bfseries\color{neutraldark}}
+\renewcommand{\cftchappagefont}{\bfseries\color{neutraldark}}
+\renewcommand{\cftchapleader}{\cftdotfill{\cftsecdotsep}}
+
+% Style des entrées de section
+\renewcommand{\cftsecfont}{\color{neutraldark}}
+\renewcommand{\cftsecpagefont}{\color{neutralmedium}}

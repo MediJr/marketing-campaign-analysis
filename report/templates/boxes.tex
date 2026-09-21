@@ -1,0 +1,126 @@
+% =====================================================
+% ENVIRONNEMENTS PERSONNALISÉS
+% =====================================================
+
+% Boîte d'information
+\newtcolorbox{infobox}[1][Information]{
+    enhanced,
+    colback=primarycolor!10,
+    colframe=primarycolor,
+    boxrule=1pt,
+    arc=3pt,
+    left=10pt,
+    right=10pt,
+    top=8pt,
+    bottom=8pt,
+    fonttitle=\bfseries\color{white},
+    title={#1}
+}
+
+% Boîte d'avertissement
+\newtcolorbox{warningbox}[1][Attention]{
+    enhanced,
+    colback=orange!10,
+    colframe=orange,
+    boxrule=1pt,
+    arc=3pt,
+    left=10pt,
+    right=10pt,
+    top=8pt,
+    bottom=8pt,
+    fonttitle=\bfseries\color{white},
+    title={#1}
+}
+
+% Boîte de succès
+\newtcolorbox{successbox}[1][Résultat]{
+    enhanced,
+    colback=secondarycolor!10,
+    colframe=secondarycolor,
+    boxrule=1pt,
+    arc=3pt,
+    left=10pt,
+    right=10pt,
+    top=8pt,
+    bottom=8pt,
+    fonttitle=\bfseries\color{white},
+    title={#1}
+}
+
+% Environnement pour objectifs
+% \newenvironment{objectives}
+% {
+%     \par\vspace{10pt}
+%     \noindent\textbf{\color{primarycolor}Objectives:}
+%     \par\vspace{5pt}
+% }
+% {
+%     \par\vspace{5pt}
+% }
+
+% Environnement pour résultats
+% \newenvironment{results}
+% {
+%     \par\vspace{10pt}
+%     \noindent\textbf{\color{secondarycolor}Results:}
+%     \par\vspace{5pt}
+% }
+% {
+%     \par\vspace{5pt}
+% }
+
+% Environnement pour définitions
+% \newenvironment{definition}[1]
+% {
+%     \par\vspace{10pt}
+%     \noindent\textbf{\color{primarycolor}Definition - #1:}
+%     \par\vspace{5pt}
+%     \begin{quote}
+% }
+% {
+%     \end{quote}
+%     \par\vspace{5pt}
+% }
+
+% Missing environments
+\newtcolorbox{technicalbox}[1][Note technique]{
+    enhanced,
+    colback=blue!5,
+    colframe=blue!50!black,
+    boxrule=1pt,
+    arc=3pt,
+    left=10pt,
+    right=10pt,
+    top=8pt,
+    bottom=8pt,
+    fonttitle=\bfseries\color{white},
+    title={#1}
+}
+
+\newtcolorbox{bestpractice}[1][Bonne pratique]{
+    enhanced,
+    colback=green!5,
+    colframe=green!50!black,
+    boxrule=1pt,
+    arc=3pt,
+    left=10pt,
+    right=10pt,
+    top=8pt,
+    bottom=8pt,
+    fonttitle=\bfseries\color{white},
+    title={#1}
+}
+
+\newtcolorbox{lessonslearned}[1][Retour d'expérience]{
+    enhanced,
+    colback=purple!5,
+    colframe=purple!50!black,
+    boxrule=1pt,
+    arc=3pt,
+    left=10pt,
+    right=10pt,
+    top=8pt,
+    bottom=8pt,
+    fonttitle=\bfseries\color{white},
+    title={#1}
+}

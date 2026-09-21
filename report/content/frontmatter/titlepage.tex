@@ -1,0 +1,80 @@
+% =====================================================
+% PAGE DE GARDE — ÉTUDE PROFESSIONNELLE
+% (bordure TikZ du template conservée ; contenu non académique)
+% =====================================================
+
+\begin{titlepage}
+    \newgeometry{top=1.27cm,bottom=1.27cm,left=1.27cm,right=1.27cm}
+    \thispagestyle{empty}
+
+    {\singlespacing
+
+    \begin{tikzpicture}[remember picture,overlay]
+        \def\bordermarg{1cm}
+        \def\innerspace{0.3cm}
+
+        \draw[primarycolor, line width=2pt]
+            ([xshift=\bordermarg,yshift=-\bordermarg]current page.north west)
+            rectangle
+            ([xshift=-\bordermarg,yshift=\bordermarg]current page.south east);
+
+        \draw[primarycolor, line width=0.8pt]
+            ([xshift=\bordermarg+\innerspace,yshift=-\bordermarg-\innerspace]current page.north west)
+            rectangle
+            ([xshift=-\bordermarg-\innerspace,yshift=\bordermarg+\innerspace]current page.south east);
+
+        \draw[primarycolor, line width=1.5pt]
+            ([xshift=\bordermarg,yshift=-\bordermarg]current page.north west)
+            -- ++(1.2,0) -- ++(0,-0.4) -- ++(-0.4,0) -- ++(0,-1.2) -- ++(-0.8,0) -- cycle;
+        \draw[primarycolor, line width=1pt, rotate around={45:([xshift=\bordermarg+0.6cm,yshift=-\bordermarg-0.6cm]current page.north west)}]
+            ([xshift=\bordermarg+0.6cm,yshift=-\bordermarg-0.6cm]current page.north west) rectangle ++(0.15,0.15);
+
+        \draw[primarycolor, line width=1.5pt]
+            ([xshift=-\bordermarg,yshift=-\bordermarg]current page.north east)
+            -- ++(-1.2,0) -- ++(0,-0.4) -- ++(0.4,0) -- ++(0,-1.2) -- ++(0.8,0) -- cycle;
+        \draw[primarycolor, line width=1pt, rotate around={45:([xshift=-\bordermarg-0.6cm,yshift=-\bordermarg-0.6cm]current page.north east)}]
+            ([xshift=-\bordermarg-0.6cm,yshift=-\bordermarg-0.6cm]current page.north east) rectangle ++(0.15,0.15);
+
+        \draw[primarycolor, line width=1.5pt]
+            ([xshift=\bordermarg,yshift=\bordermarg]current page.south west)
+            -- ++(1.2,0) -- ++(0,0.4) -- ++(-0.4,0) -- ++(0,1.2) -- ++(-0.8,0) -- cycle;
+        \draw[primarycolor, line width=1pt, rotate around={45:([xshift=\bordermarg+0.6cm,yshift=\bordermarg+0.6cm]current page.south west)}]
+            ([xshift=\bordermarg+0.6cm,yshift=\bordermarg+0.6cm]current page.south west) rectangle ++(0.15,0.15);
+
+        \draw[primarycolor, line width=1.5pt]
+            ([xshift=-\bordermarg,yshift=\bordermarg]current page.south east)
+            -- ++(-1.2,0) -- ++(0,0.4) -- ++(0.4,0) -- ++(0,1.2) -- ++(0.8,0) -- cycle;
+        \draw[primarycolor, line width=1pt, rotate around={45:([xshift=-\bordermarg-0.6cm,yshift=\bordermarg+0.6cm]current page.south east)}]
+            ([xshift=-\bordermarg-0.6cm,yshift=\bordermarg+0.6cm]current page.south east) rectangle ++(0.15,0.15);
+    \end{tikzpicture}
+
+    \begin{center}
+        \vspace*{2.1cm}
+
+        {\large \textcolor{textcolor}{\textbf{Data Analytics / Data Analysis}}}\\[1.35cm]
+
+        {\Huge \textcolor{primarycolor}{\textbf{ANALYSE DES PERFORMANCES}}}\\[0.28cm]
+        {\Huge \textcolor{primarycolor}{\textbf{DES CAMPAGNES MARKETING}}}\\[0.75cm]
+
+        \textcolor{primarycolor}{\rule{0.62\linewidth}{0.5mm}}\\[0.7cm]
+
+        {\large \textcolor{secondarycolor}{Exploration, analyse et visualisation}}\\[0.12cm]
+        {\large \textcolor{secondarycolor}{de 200\,005 campagnes marketing}}\\[1.6cm]
+
+        {\large \textcolor{textcolor}{Réalisé par}}\\[0.4cm]
+        {\LARGE \textcolor{primarycolor}{\textbf{Manassé Lumu Bamanoa}}}\\[0.45cm]
+        {\large \textcolor{graycolor}{Data Analytics / Data Analysis}}
+
+        \vfill
+
+        {\normalsize \textcolor{textcolor}{Étude réalisée le 21 septembre 2026}}\\[0.85cm]
+
+        {\large \textcolor{textcolor}{\textbf{MediJr}}}\\[0.22cm]
+        {\large \href{https://github.com/MediJr}{\textcolor{primarycolor}{\texttt{https://github.com/MediJr}}}}
+
+        \vspace*{1.55cm}
+    \end{center}
+
+    } % singlespacing
+    \restoregeometry
+\end{titlepage}

@@ -1,0 +1,23 @@
+{
+  "name": "latex-report-template",
+  "version": "1.0.0",
+  "description": "Professional LaTeX Document",
+  "scripts": {
+    "build": "python scripts/compile.py",
+    "clean": "python scripts/clean.py",
+    "quick": "python scripts/compile.py --quick"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "keywords": [
+    "latex",
+    "document",
+    "professional",
+    "template"
+  ],
+  "author": "",
+  "license": "MIT"
+}

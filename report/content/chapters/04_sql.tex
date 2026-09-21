@@ -1,0 +1,48 @@
+\chapter{Stockage et exploration SQL}
+\label{chap:sql}
+
+\section{Base et table}
+
+La base \database{marketing\_analysis} a été créée sur PostgreSQL local (hôte \texttt{127.0.0.1}, port 5432). Le rôle d'application est \texttt{data\_project}. La table \filename{public.marketing\_campaigns} reprend les 15 colonnes source, en \texttt{snake\_case}.
+
+Les types retenus sont : \texttt{INTEGER} pour l'identifiant, les clics, les impressions et la durée ; \texttt{SMALLINT} pour l'engagement ; \texttt{NUMERIC} pour le ROI, le coût et la conversion ; \texttt{DATE} pour la date ; \texttt{TEXT} pour les catégories. Toutes les colonnes sont \texttt{NOT NULL}. \texttt{campaign\_id} est clé primaire.
+
+Contraintes \texttt{CHECK} posées à la création :
+
+\begin{itemize}
+\item \texttt{acquisition\_cost >= 0} ;
+\item \texttt{conversion\_rate BETWEEN 0 AND 1} ;
+\item \texttt{clicks <= impressions} ;
+\item \texttt{engagement\_score BETWEEN 1 AND 10}.
+\end{itemize}
+
+\section{Import et contrôles}
+
+Les 200\,005 lignes ont été importées depuis Excel (conversion de la durée texte vers un entier de jours, et de la date vers \texttt{DATE}). Les contrôles de qualité en base et en Pandas donnent : 0 valeur manquante, identifiants uniques de 1 à 200\,005, dates strictement dans l'année 2021, aucune anomalie bloquante.
+
+\section{Analyses SQL}
+
+Les requêtes d'exploration sont des \texttt{SELECT} en lecture seule. Elles ont servi à :
+
+\begin{itemize}
+\item \textbf{Agrégations et \texttt{GROUP BY}.} Volumes et ROI moyen par type, entreprise, canal, audience, segment, localisation, mois.
+\item \textbf{KPI.} \texttt{COUNT}, \texttt{AVG} sur ROI, coût, conversion, engagement ; CTR calculé soit comme moyenne des ratios individuels, soit comme $\sum$ clics / $\sum$ impressions (ces deux définitions ne coïncident pas, d'où l'écart entre CTR moyen $\approx$ 14~\% et CTR global $\approx$ 10~\%).
+\item \textbf{\texttt{CASE}.} Classes de ROI (faible $<$ 4, moyen $[4,6[$, élevé $\geq$ 6) : 66\,503 / 66\,438 / 67\,064 campagnes, ROI moyens 2,99 / 5,00 / 7,00.
+\item \textbf{\texttt{HAVING}.} Filtres après agrégation, par exemple pour n'afficher que des groupes dépassant un seuil d'effectif ou de KPI.
+\item \textbf{Analyses croisées.} Tous les couples entreprise $\times$ canal et type $\times$ canal existent ; les volumes par couple sont du même ordre de grandeur.
+\item \textbf{Analyse temporelle.} Volume mensuel aligné sur le nombre de jours du mois ; rythme proche de 548 campagnes/jour.
+\end{itemize}
+
+\begin{lstlisting}[language=SQL, caption={Exemple d'agrégation SQL (ROI moyen par type)}, label={lst:sql-groupby}]
+SELECT
+    campaign_type,
+    COUNT(*) AS campaign_count,
+    AVG(roi) AS avg_roi
+FROM public.marketing_campaigns
+GROUP BY campaign_type
+ORDER BY avg_roi DESC;
+\end{lstlisting}
+
+Résultat observé : Influencer 40\,170 campagnes (ROI moyen 5,0110), Search 40\,157 (5,0084), Display 39\,988 (5,0065), Email 39\,871 (4,9943), Social Media 39\,819 (4,9918). La somme des effectifs vaut 200\,005. Les écarts de ROI moyen restent inférieurs à 0,02 : ce n'est pas un classement de performance.
+
+Des tableaux SQL complémentaires figurent en annexe~\ref{app:sql}.

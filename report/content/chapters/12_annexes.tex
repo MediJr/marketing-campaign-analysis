@@ -1,0 +1,169 @@
+\chapter{Contrôles qualité}
+\label{app:qualite}
+
+\begin{table}[H]
+\centering
+\caption{Synthèse des contrôles de qualité}
+\label{tab:annexe-qualite}
+\begin{tabular}{|p{7.4cm}|p{5.4cm}|}
+\hline
+\tableheadercell{Contrôle} & \tableheadercell{Résultat} \\
+\hline
+Nombre de lignes & 200\,005 \\
+\hline
+\alternaterow
+Colonnes sources / après préparation & 15 / 21 \\
+\hline
+\texttt{campaign\_id} unique & OK (1 à 200\,005) \\
+\hline
+\alternaterow
+Valeurs manquantes & 0 \\
+\hline
+Infinis & 0 \\
+\hline
+\alternaterow
+Dates hors 2021 & 0 \\
+\hline
+CTR cohérent avec clics / impressions & OK \\
+\hline
+\alternaterow
+Valeurs sources inchangées après EDA & OK \\
+\hline
+Anomalies de qualité & 0 \\
+\hline
+\end{tabular}
+\end{table}
+
+\chapter{Tableaux SQL complémentaires}
+\label{app:sql}
+
+\section{Volumes par entreprise}
+
+\begin{table}[H]
+\centering
+\caption{Campagnes par entreprise (SQL / briefing)}
+\label{tab:annexe-company}
+\begin{tabular}{|l|r|r|r|}
+\hline
+\tableheadercell{Entreprise} & \tableheadercell{$n$} & \tableheadercell{Part} & \tableheadercell{ROI moyen} \\
+\hline
+TechCorp & 40\,238 & 20,12~\% & 5,01 \\
+\hline
+\alternaterow
+Alpha Innovations & 40\,051 & 20,02~\% & 5,01 \\
+\hline
+DataTech Solutions & 40\,014 & 20,01~\% & 5,01 \\
+\hline
+\alternaterow
+NexGen Systems & 39\,991 & 20,00~\% & 4,99 \\
+\hline
+Innovate Industries & 39\,711 & 19,86~\% & 5,00 \\
+\hline
+\end{tabular}
+\end{table}
+
+\section{Classes de ROI (\texttt{CASE})}
+
+\begin{table}[H]
+\centering
+\caption{Classes de ROI calculées en SQL}
+\label{tab:annexe-roi-case}
+\begin{tabular}{|l|r|r|}
+\hline
+\tableheadercell{Classe} & \tableheadercell{Campagnes} & \tableheadercell{ROI moyen} \\
+\hline
+Faible (ROI $<$ 4) & 66\,503 & 2,9946 \\
+\hline
+\alternaterow
+Moyen ($4 \leq$ ROI $<$ 6) & 66\,438 & 4,9983 \\
+\hline
+Élevé (ROI $\geq$ 6) & 67\,064 & 6,9975 \\
+\hline
+\end{tabular}
+\end{table}
+
+\section{Types de campagnes}
+
+\begin{table}[H]
+\centering
+\caption{Effectif et ROI moyen par type de campagne}
+\label{tab:annexe-types}
+\begin{tabular}{|l|r|r|}
+\hline
+\tableheadercell{Type} & \tableheadercell{Campagnes} & \tableheadercell{ROI moyen} \\
+\hline
+Influencer & 40\,170 & 5,0110 \\
+\hline
+\alternaterow
+Search & 40\,157 & 5,0084 \\
+\hline
+Display & 39\,988 & 5,0065 \\
+\hline
+\alternaterow
+Email & 39\,871 & 4,9943 \\
+\hline
+Social Media & 39\,819 & 4,9918 \\
+\hline
+\end{tabular}
+\end{table}
+
+\chapter{Visualisations complémentaires}
+\label{app:viz}
+
+Les figures suivantes complètent le chapitre~\ref{chap:visualisations}. Elles proviennent du même script Matplotlib et de la même revue.
+
+\standardfigure{assets/images/charts/02_volume_campaign_type.png}{0.88\textwidth}{Volume par type de campagne}{fig:vol-type}
+
+\standardfigure{assets/images/charts/03_volume_channel.png}{0.88\textwidth}{Volume par canal}{fig:vol-channel}
+
+\standardfigure{assets/images/charts/05_roi_mensuel.png}{0.88\textwidth}{ROI moyen mensuel (écarts faibles)}{fig:roi-mois}
+
+\standardfigure{assets/images/charts/06_distribution_roi.png}{0.88\textwidth}{Distribution du ROI}{fig:dist-roi}
+
+\standardfigure{assets/images/charts/08_distribution_acquisition_cost.png}{0.88\textwidth}{Distribution du coût d'acquisition}{fig:dist-cout}
+
+\standardfigure{assets/images/charts/09_distribution_conversion_rate.png}{0.88\textwidth}{Distribution discrète du taux de conversion}{fig:dist-conv}
+
+\standardfigure{assets/images/charts/11_roi_classes.png}{0.80\textwidth}{Distribution du ROI par classe de ROI}{fig:roi-classes}
+
+\standardfigure{assets/images/charts/13_heatmap_audience_segment.png}{0.92\textwidth}{ROI moyen : audience $\times$ segment}{fig:heat-aud}
+
+\begin{center}
+\textit{Les écarts observés sont faibles ; ils ne permettent pas d'établir une différence forte entre les combinaisons.}
+\end{center}
+
+\standardfigure{assets/images/charts/14_heatmap_company_channel.png}{0.92\textwidth}{ROI moyen : entreprise $\times$ canal (pas un classement)}{fig:heat-co}
+
+\standardfigure{assets/images/charts/15_roi_duration.png}{0.80\textwidth}{ROI selon la durée de campagne}{fig:roi-duree}
+
+\standardfigure{assets/images/charts/16_roi_engagement.png}{0.88\textwidth}{ROI moyen selon le score d'engagement}{fig:roi-eng}
+
+\chapter{Structure du projet et scripts}
+\label{app:scripts}
+
+\begin{table}[H]
+\centering
+\caption{Scripts analytiques du projet}
+\label{tab:scripts}
+\begin{tabular}{|p{5.4cm}|p{8.0cm}|}
+\hline
+\tableheadercell{Fichier} & \tableheadercell{Rôle} \\
+\hline
+\texttt{postgres\_to\_python.py} & Extraction PostgreSQL $\rightarrow$ Pandas \\
+\hline
+\alternaterow
+\texttt{python\_dataframe\_profiling.py} & Profilage et préparation (21 colonnes) \\
+\hline
+\texttt{python\_eda.py} & EDA A--S, sans graphique \\
+\hline
+\alternaterow
+\texttt{python\_visualisations.py} & 16 figures Matplotlib \\
+\hline
+\texttt{dashboard.py} & Dashboard Streamlit \\
+\hline
+\end{tabular}
+\end{table}
+
+Le présent rapport LaTeX se trouve dans \filename{report/}. Le modèle de mise en page provient du dépôt GitHub \texttt{sikatikenmogne/latex-report-template}, licence MIT \cite{sikatitemplate}. Le dépôt amont n'a pas été modifié : seule une copie de travail a été adaptée.
+
+Compilation : \texttt{python scripts/compile.py} depuis \filename{report/}, puis copie du PDF vers \filename{rapport\_analyse\_marketing.pdf}.

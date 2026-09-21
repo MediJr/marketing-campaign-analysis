@@ -1,0 +1,67 @@
+% =====================================================
+% TEMPLATES DE FIGURES
+% =====================================================
+
+% Template de figure standard (légende en bas)
+\newcommand{\standardfigure}[4]{
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=#2, keepaspectratio]{#1}
+    \caption{#3}
+    \label{#4}
+  \end{figure}
+}
+
+% Template de figure avec cadre
+\newcommand{\framedfigure}[4]{
+  \begin{figure}[H]
+    \centering
+    \fbox{\includegraphics[width=#2, keepaspectratio]{#1}}
+    \caption{#3}
+    \label{#4}
+  \end{figure}
+}
+
+% Template de figure simple sans cadre
+\newcommand{\simplefigure}[4]{
+  \begin{figure}[h]
+    \centering
+    \includegraphics[width=#2]{#1}
+    \caption{#3}
+    \label{#4}
+  \end{figure}
+}
+
+% Template pour diagrammes avec bordure colorée
+\newcommand{\diagramfigure}[5]{
+  \begin{figure}[H]
+    \centering
+    \begin{tcolorbox}[colback=white,colframe=primarycolor,width=#2]
+      \centering
+      \includegraphics[width=0.9\textwidth, height=#3, keepaspectratio]{#1}
+    \end{tcolorbox}
+    \caption{#4}
+    \label{#5}
+  \end{figure}
+}
+
+% Template pour figures côte à côte
+\newcommand{\doublefigure}[8]{
+  \begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{#3}
+      \centering
+      \includegraphics[width=\textwidth]{#1}
+      \caption{#4}
+      \label{#5}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{#6}
+      \centering
+      \includegraphics[width=\textwidth]{#2}
+      \caption{#7}
+      \label{#8}
+    \end{subfigure}
+    \caption{Comparison figures}
+  \end{figure}
+}

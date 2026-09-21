@@ -1,0 +1,45 @@
+\chapter{Dashboard Streamlit}
+\label{chap:dashboard}
+
+\section{Architecture}
+
+Le livrable de restitution est \filename{dashboard.py}, lancé par \texttt{streamlit run dashboard.py}. Il s'appuie sur Streamlit, Pandas et Matplotlib uniquement \cite{streamlitdocs}. Le DataFrame source est chargé une fois depuis PostgreSQL (\texttt{@st.cache\_data}), en lecture seule. Les filtres produisent un DataFrame distinct ; le DataFrame chargé n'est jamais modifié.
+
+\section{Filtres et KPI}
+
+La barre latérale propose les filtres Company, Campaign Type, Channel, Target Audience, Customer Segment, Location, Quarter et Month, chacun avec l'option « Tous ». Les filtres se combinent. À chaque changement, les KPI et les graphiques concernés sont recalculés sur le sous-ensemble.
+
+Les cartes d'indicateurs affichent : nombre de campagnes, ROI moyen, coût d'acquisition moyen, taux de conversion moyen (en pourcentage), CTR moyen (en pourcentage, par exemple 14,04~\% et non 0,1404) et engagement moyen.
+
+\section{Organisation des vues}
+
+Le dashboard reprend la logique des visualisations validées, recalculée dynamiquement :
+
+\begin{enumerate}
+\item vue d'ensemble (volumes entreprise, type, canal) ;
+\item distributions (ROI, coût, conversion, CTR) ;
+\item audience, segments et canaux (heatmaps ROI et classes de CTR) ;
+\item analyse temporelle (volume mensuel et ROI mensuel, avec échelle prudente) ;
+\item corrélations et analyses complémentaires (durée, engagement) ;
+\item constats et limites issus de l'EDA.
+\end{enumerate}
+
+Un export CSV optionnel, nommé \filename{marketing\_campaigns\_filtered.csv}, est généré uniquement à partir du DataFrame filtré.
+
+\section{Emplacement pour une capture}
+
+Aucune capture d'écran du dashboard n'est jointe à ce rapport. L'encadré suivant réserve un emplacement pour une future illustration.
+
+\begin{figure}[H]
+\centering
+\fbox{%
+\begin{minipage}{0.88\textwidth}
+\centering
+\vspace{1.6cm}
+\textit{Emplacement réservé --- capture d'écran du dashboard Streamlit}\\[0.3cm]
+{\small Commande : \texttt{streamlit run dashboard.py}}
+\vspace{1.6cm}
+\end{minipage}}
+\caption{Emplacement prévu pour une capture du dashboard (non disponible au moment de la rédaction)}
+\label{fig:dashboard-placeholder}
+\end{figure}

@@ -1,0 +1,39 @@
+\chapter{Introduction}
+\label{chap:introduction}
+
+\section{Contexte}
+\label{sec:contexte}
+
+Le projet porte sur l'analyse de performances d'un ensemble de campagnes marketing. Les données sont disponibles sous forme d'un fichier Excel (\filename{marketing\_campaign\_dataset.xlsx}), puis stockées dans PostgreSQL et analysées en SQL et en Python. Le travail documenté ici reprend exclusivement les étapes réellement réalisées : import, exploration SQL, extraction Pandas, profilage, analyse exploratoire, visualisations Matplotlib, revue des graphiques et dashboard Streamlit \cite{pandasdocs,matplotlibdocs,streamlitdocs,postgresql18}.
+
+Aucune hypothèse de marché, de budget publicitaire ou d'organisation interne n'est ajoutée : le rapport s'en tient aux variables et aux résultats observés dans le jeu de données \cite{marketingdataset}.
+
+\section{Problématique}
+
+Comment décrire, de façon reproductible et honnête, les performances de 200\,005 campagnes marketing de l'année 2021, selon les entreprises, les types de campagnes, les canaux, les audiences, les segments, les localisations et la période, sans transformer une association statistique en relation causale ?
+
+\section{Objectif général}
+
+Construire une chaîne d'analyse allant du fichier Excel jusqu'à une restitution interactive, en conservant l'intégrité des données sources et en produisant des indicateurs et des graphiques validés.
+
+\section{Objectifs spécifiques}
+
+\begin{objectives}
+\begin{itemize}
+\item Stocker les 200\,005 campagnes dans PostgreSQL, dans une table unique contrainte.
+\item Explorer les volumes et les KPI en SQL (agrégations, \texttt{GROUP BY}, \texttt{HAVING}, \texttt{CASE}).
+\item Extraire le résultat vers Pandas, contrôler les types et préparer des indicateurs calendaires et le CTR.
+\item Réaliser une EDA exhaustive sans graphique, puis 16 visualisations Matplotlib revues.
+\item Restituer les résultats dans un dashboard Streamlit filtrable, avec export CSV du sous-ensemble affiché.
+\end{itemize}
+\end{objectives}
+
+\section{Périmètre}
+
+Le périmètre est le fichier Excel du projet, la base \database{marketing\_analysis}, la table \filename{public.marketing\_campaigns} et les scripts Python associés. La période couverte par les dates de campagne est le 1\textsuperscript{er} janvier 2021 au 31 décembre 2021. Le grain est une ligne = une campagne.
+
+Hors périmètre : Power BI, Tableau, Seaborn, Plotly, modélisation prédictive, modèle dimensionnel en étoile ou en flocon, et toute modification des données sources après import.
+
+\section{Organisation du rapport}
+
+Le \chapref{dataset} décrit le jeu de données. Le \chapref{architecture} présente le pipeline. Les \chapref{sql} et \chapref{python} documentent le stockage SQL puis l'extraction Python. Le \chapref{eda} synthétise l'EDA, le \chapref{visualisations} les graphiques validés et le \chapref{dashboard} le dashboard. Les \chapref{resultats} et \chapref{limites} rassemblent constats et limites, avant la conclusion et les annexes.
