@@ -8,9 +8,9 @@ Ce dossier documente le jeu utilisé par le projet. **Le fichier Excel n’est p
 
 ## Origine
 
-Fichier Excel local, conservé dans le dossier parent `Data` (hors dépôt GitHub) :
+Fichier Excel local, conservé hors du dépôt GitHub, dans le dossier parent du dépôt (voir « Placement local » ci-dessous) :
 
-`C:\Users\manas\OneDrive\Documents\Data\marketing_campaign_dataset\marketing_campaign_dataset.xlsx`
+`../marketing_campaign_dataset/marketing_campaign_dataset.xlsx`
 
 Aucune licence publique n’est jointe au fichier. Il n’est donc **pas** téléchargeable depuis GitHub.
 

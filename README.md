@@ -1,5 +1,21 @@
 # Analyse des performances des campagnes marketing
 
+## Summary (English)
+
+Personal end-to-end data analysis project on a dataset of **200,005 marketing campaigns** dated 2021 (5 companies, 5 campaign types, 6 channels).
+
+- **Pipeline:** Excel → PostgreSQL → SQL → Python/Pandas → EDA → Matplotlib → Streamlit → LaTeX report.
+- **SQL:** exploratory, SELECT-only queries (aggregations, `CASE`, monthly volumes) in [`sql/analyses.sql`](sql/analyses.sql).
+- **Python:** data extraction, preparation, quality checks and EDA with Pandas; 16 Matplotlib charts in [`visualisations/`](visualisations/).
+- **Dashboard:** local Streamlit app ([`dashboard/dashboard.py`](dashboard/dashboard.py)) with 6 KPIs, 8 combinable filters, a correlation heatmap and CSV export of the filtered data. It reads PostgreSQL with SELECT-only queries and needs a local, populated database to run.
+- **Report:** 40-page analysis report in French ([`rapport_analyse_marketing.pdf`](rapport_analyse_marketing.pdf)), covering findings and limitations.
+
+Key findings are descriptive: campaign volumes are evenly balanced across categories, the average ROI stays close to 5 across all dimensions, and the strongest correlations are mechanical (CTR = clicks / impressions). No causal claims or business recommendations are drawn from these small differences.
+
+The source dataset is not included in this repository (see [`data/README.md`](data/README.md)). The rest of this README is in French.
+
+---
+
 Projet Data Analytics de bout en bout portant sur l'analyse de **200 005 campagnes marketing** sur l'année **2021**.
 
 Chaîne complète :
@@ -155,7 +171,7 @@ python scripts/compile.py
 ## Installation
 
 ```bash
-git clone <repository>
+git clone https://github.com/MediJr/marketing-campaign-analysis.git
 cd marketing-campaign-analysis
 
 python -m venv .venv
